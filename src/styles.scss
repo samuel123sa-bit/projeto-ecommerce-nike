@@ -1,0 +1,106 @@
+:root {
+    /* --- Cores Marca Nike --- */
+    --nike-orange: #ff6600;
+    --nike-orange-hover: #e05500;
+    --nike-volt: #d2f500; /* Verde neon / Volt clássico da marca */
+    
+    /* --- Neutros & Superfícies --- */
+    --nike-black: #111111;
+    --nike-dark-gray: #1e1e1e;
+    --nike-gray: #757575;
+    --nike-light-gray: #f5f5f5;
+    --nike-border: #e5e5e5;
+    --nike-white: #ffffff;
+
+    /* --- Status & Utilidades --- */
+    --nike-text-muted: #707072;
+    --nike-success: #12805c;
+    --nike-error: #d32f2f;
+
+    /* --- Tipografia --- */
+    --nike-font-primary: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --nike-font-futura: 'Futura Bold', 'Futura', 'Helvetica Neue', sans-serif;
+    --nike-font-mono: 'Courier New', monospace;
+
+    /* --- Geometria & Efeitos --- */
+    --nike-radius-sm: 4px;
+    --nike-radius-md: 20px; /* Bordas levemente arredondadas padrão Nike */
+    --nike-radius-pill: 30px; /* Botões ovais / pilula */
+    --nike-speed-fast: 0.2s ease-in-out;
+    --nike-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+    --nike-shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  font-family: var(--nike-font-primary);
+  color: var(--nike-black);
+  background-color: var(--nike-white);
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+h1, h2, h3, h4, .nike-title {
+  font-family: var(--nike-font-futura);
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity var(--nike-speed-fast);
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+/* ==============================================
+   LAYOUT PRINCIPAL 100VH (STICKY FOOTER)
+   ============================================== */
+
+/* 1. Define o body como um container flex de altura total */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--nike-white);
+  color: var(--nike-black);
+}
+
+/* 2. Faz o componente que vem DEPOIS do router-outlet ocupar o espaço restante */
+router-outlet + * {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}

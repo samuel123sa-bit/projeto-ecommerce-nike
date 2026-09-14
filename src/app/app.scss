@@ -1,0 +1,12 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--f1-black);
+}
+
+.main-content {
+  flex: 1; /* Ocupa todo o espaço disponível entre o header e o footer */
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,64 @@
+@if (product) {
+<div class="nike-product-page">
+  <!-- Imagem Principal Única -->
+  <main class="gallery-container">
+    <div class="image-wrapper">
+      <img [src]="product.image" [alt]="product.name" loading="eager" />
+    </div>
+  </main>
+
+  <!-- Painel Lateral Fixado -->
+  <aside class="product-info-panel">
+    <div class="info-content">
+      <header class="product-header">
+        <h1 class="product-name">{{ product.name }}</h1>
+        <p class="product-ref">REF. 0418/147</p>
+        <p class="product-price">{{ product.price | currency:'BRL':'symbol':'1.2-2' }}</p>
+        <span class="vat-included">Impostos incluídos</span>
+      </header>
+
+      <div class="product-description">
+        <p>{{ product.description }}</p>
+      </div>
+
+      <!-- Seletor de Tamanho -->
+      <div class="size-selector">
+        <div class="size-header">
+          <span>SELECIONE O TAMANHO</span>
+          <button type="button" class="guide-btn">Guia de tamanhos</button>
+        </div>
+        <div class="size-list">
+          @for (size of availableSizes; track size) {
+          <button type="button" class="size-btn" [class.active]="selectedSize === size" (click)="selectSize(size)">
+            {{ size }}
+          </button>
+          }
+        </div>
+      </div>
+
+      <!-- Botão de Ação -->
+      <div class="actions">
+        <button type="button" class="btn-add-to-cart" [disabled]="!selectedSize">
+          {{ selectedSize ? 'ADICIONAR AO CARRINHO' : 'SELECIONE UM TAMANHO' }}
+        </button>
+      </div>
+
+      <!-- Composição e Cuidados -->
+      <section class="accordion">
+        <div class="accordion-item">
+          <button type="button" class="accordion-header" (click)="toggleDetails()">
+            <span>COMPOSIÇÃO E CUIDADOS</span>
+            <span class="icon">{{ isDetailsOpen ? '—' : '+' }}</span>
+          </button>
+
+          @if (isDetailsOpen) {
+          <div class="accordion-body">
+            <p>100% Algodão de alta densidade. Lavar à máquina no máximo a 30ºC em ciclo delicado.</p>
+          </div>
+          }
+        </div>
+      </section>
+    </div>
+  </aside>
+</div>
+}

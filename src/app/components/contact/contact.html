@@ -1,0 +1,75 @@
+<section class="contact-container">
+  <header class="contact-header">
+    <span class="category-tag">Atendimento ao Cliente</span>
+    <h1>FALE CONOSCO</h1>
+    <p class="subtitle">Tem alguma dúvida sobre pedidos, entregas ou nossos produtos? Estamos prontos para ajudar.</p>
+  </header>
+
+  <div class="contact-layout">
+    <!-- Formulário de Contato -->
+    <div class="contact-form-wrapper">
+      @if (submitted) {
+      <div class="success-message">
+        <h2>MENSAGEM ENVIADA!</h2>
+        <p>Obrigado por entrar em contato, <strong>{{ formData.name }}</strong>. Responderemos em até 24 horas úteis.
+        </p>
+        <button class="btn-primary" (click)="submitted = false">Enviar outra mensagem</button>
+      </div>
+      } @else {
+      <form (ngSubmit)="onSubmit()" #contactForm="ngForm" class="contact-form">
+        <div class="form-group">
+          <label for="name">Nome Completo</label>
+          <input type="text" id="name" name="name" [(ngModel)]="formData.name" required placeholder="Digite seu nome" />
+        </div>
+
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" [(ngModel)]="formData.email" required
+            placeholder="seu.email@exemplo.com" />
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Assunto</label>
+          <select id="subject" name="subject" [(ngModel)]="formData.subject">
+            <option value="" disabled selected>Selecione um assunto</option>
+            <option value="pedidos">Status do Pedido / Entrega</option>
+            <option value="trocas">Trocas e Devoluções</option>
+            <option value="produtos">Dúvidas sobre Produtos</option>
+            <option value="outros">Outros Assuntos</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Mensagem</label>
+          <textarea id="message" name="message" rows="5" [(ngModel)]="formData.message" required
+            placeholder="Como podemos te ajudar hoje?"></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary" [disabled]="!contactForm.form.valid">
+          ENVIAR MENSAGEM
+        </button>
+      </form>
+      }
+    </div>
+
+    <!-- Informações Úteis do Lado -->
+    <aside class="contact-info">
+      <div class="info-card">
+        <h3>TELEFONE</h3>
+        <p><strong>0800 123 4567</strong></p>
+        <p class="small">Segunda a Sexta: 08h às 20h<br>Sábado: 09h às 18h</p>
+      </div>
+
+      <div class="info-card">
+        <h3>CHAT AO VIVO</h3>
+        <p>Fale diretamente com um de nossos especialistas em tempo real.</p>
+        <span class="status-online">Disponível agora</span>
+      </div>
+
+      <div class="info-card">
+        <h3>LOJAS FÍSICAS</h3>
+        <p>Encontre a Nike Store mais próxima de você para atendimento presencial.</p>
+      </div>
+    </aside>
+  </div>
+</section>

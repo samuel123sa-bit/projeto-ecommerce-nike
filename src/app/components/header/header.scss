@@ -1,0 +1,139 @@
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--nike-white);
+  border-bottom: 1px solid var(--nike-border);
+  height: 60px;
+}
+
+.nav-container {
+  max-width: 1400px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  a {
+    color: var(--nike-black);
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  .swoosh-icon {
+    display: block;
+  }
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+
+  li a {
+    font-size: 0.938rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--nike-black);
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color var(--nike-speed-fast);
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background-color: var(--nike-black);
+      transition: width var(--nike-speed-fast);
+    }
+
+    &:hover::after,
+    &.active::after {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: var(--nike-white);
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1.5rem;
+    border-bottom: 1px solid var(--nike-border);
+    transform: translateY(-150%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    pointer-events: none;
+
+    &.is-active {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+
+  .cart-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--nike-black);
+    padding: 0.25rem;
+  }
+
+  .mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+
+    .hamburger {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background-color: var(--nike-black);
+      position: relative;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 2px;
+        background-color: var(--nike-black);
+        left: 0;
+      }
+
+      &::before { top: -6px; }
+      &::after { top: 6px; }
+    }
+
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+}

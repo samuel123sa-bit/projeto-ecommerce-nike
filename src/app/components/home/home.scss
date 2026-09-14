@@ -1,0 +1,92 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem 4rem;
+  text-align: center;
+  background-color: var(--nike-white);
+
+  &__image-container {
+    width: 100%;
+    max-width: 1200px;
+    max-height: 550px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 2.5rem;
+    background-color: var(--nike-light-gray);
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+
+  &__content {
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__tagline {
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--nike-black);
+    margin-bottom: 0.5rem;
+  }
+
+  &__title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 0.95;
+    margin-bottom: 1rem;
+    color: var(--nike-black);
+  }
+
+  &__subtitle {
+    font-size: 1.125rem;
+    color: var(--nike-gray);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    max-width: 500px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+/* Botão Padrão Nike */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: var(--nike-radius-pill);
+  transition: all var(--nike-speed-fast);
+  cursor: pointer;
+
+  &--primary {
+    background-color: var(--nike-black);
+    color: var(--nike-white);
+    border: none;
+
+    &:hover {
+      background-color: #333333;
+      transform: translateY(-2px);
+      opacity: 1;
+    }
+  }
+}
